@@ -15,21 +15,21 @@
 
   "Partial functions allow procrastination"
   (= 20 (let [multiply-by-5 (partial * 5)]
-          (___ __)))
+          (multiply-by-5 4)))
 
   "Don't forget: first things first"
-  (= [__ __ __ __]
+  (= [:a :b :foo :bar]
        (let [ab-adder (partial concat [:a :b])]
-         (ab-adder [__ __])))
+         (ab-adder [:foo :bar])))
 
   "Functions can join forces as one 'composed' function"
   (= 25 (let [inc-and-square (comp square inc)]
-          (inc-and-square __)))
+          (inc-and-square 4)))
 
   "Have a go on a double dec-er"
-  (= __ (let [double-dec (comp dec dec)]
+  (= 8 (let [double-dec (comp dec dec)]
           (double-dec 10)))
 
   "Be careful about the order in which you mix your functions"
-  (= 99 (let [square-and-dec ___]
+  (= 99 (let [square-and-dec (comp dec square)]
           (square-and-dec 10))))
